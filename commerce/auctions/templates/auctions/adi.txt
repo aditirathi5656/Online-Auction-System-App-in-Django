@@ -1,0 +1,37 @@
+
+[Packet Capture Module]
+   | Start Capture
+   v
+[Extract Features]
+   |
+   v
+[Store Features] --------------------> [Retrieve Features] ---------->
+   |                                            ^                    |
+   v                                            |                    |
+[Retrieve Features]                             |                    |
+   |                                            |                    |
+   v                                            |                    |
+[Clean Data]                                    |                    |
+   v                                            |                    |
+[Encode/Scale Data]                             |                    |
+   v                                            |                    |
+[Store Preprocessed Data]                       |                    |
+   v                                            |                    |
+[Retrieve Preprocessed Data]                    |                    |
+   v                                            |                    |
+[Load Model]                                    |                    |
+   v                                            |                    |
+[Predict Traffic Type]                          |                    |
+   v                                            |                    |
+[Store Prediction Result]                       |                    |
+   v                                            |                    |
+[Access Dashboard] -----------------------------|                    |
+   |                                            |                    |
+   v                                            |                    |
+[Fetch Packet Data]                             |                    |
+   v                                            |                    |
+[Display Results]                               |                    |
+   ^                                            |                    |
+   |                                            |                    |
+[API Request for Packets] <-> [API Response with Packets] <------------
+

@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
+    </head>
+    <body style="background-color:teal;">
+        <h1 style="text-align: center;color:white;font-weight: bolder;font-size: 10em;">AUCTIONS</h1>
+        <div style="color:azure;text-align: center;">
+            {% if user.is_authenticated %}
+                Signed in as <strong>{{ user.username }}</strong>.
+            {% else %}
+                Not signed in.
+            {% endif %}
+        </div>
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}"  style="font-weight: bolder;color:white;font-size: xx-large;">Active Listings</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'cat_list' %}" style="font-weight: bolder;color:white;font-size: xx-large;">Categories</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}" style="font-weight: bolder;color:white;font-size: xx-large;">Log Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'create' %}" style="font-weight: bolder;color:white;font-size: xx-large;">Create Listing</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'watchlistpage' user.username %}" style="font-weight: bolder;color:white;font-size: xx-large;">Watch List</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'winnings' %}" style="font-weight: bolder;color:white;font-size: xx-large;" >Your Winnings</a>
+                </li>
+
+                
+
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}" style="font-weight: bolder;color:white;font-size: xx-large;">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}" style="font-weight: bolder;color:white;font-size: xx-large;">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+        <hr>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>
